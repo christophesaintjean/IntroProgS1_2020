@@ -1,0 +1,31 @@
+theme : simple
+
+# Layout
+layout : center-left
+#layout : top-left
+
+
+# Look-and-Feel
+logo : assets/images/logo.png
+logo-position : top-right
+
+highlight : monokai-sublime
+
+# background
+background : assets/img/bg.png
+background-size : auto 90%
+background-opacity : 75
+
+# Behavior
+transition : fade
+#transition : none
+published : true
+
+# Plugins
+charts : false
+#mathjax : TeX-MML-AM_CHTML
+mathjax : TeX-MML-AM_HTMLorMML-full
+code-line-numbers : false
+print-fragments : false
+published : true
+loop : false
