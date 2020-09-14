@@ -2,7 +2,7 @@
 
 Christophe Saint-Jean
 
-[Transparents](https://gitpitch.com/christophesaintjean/cours/IntroProgS1_2020) / [Code](https://tinyurl.com/y2s2hxtn) du cours 2020-2021
+[Transparents](https://gitpitch.com/christophesaintjean/IntroProgS1_2020#/) / [Code](https://tinyurl.com/codeintroprogS1) du cours 2020-2021
 
 ---
 
@@ -20,7 +20,7 @@ Christophe Saint-Jean
 
 ### L'équipe enseignante
 
-* Sanae Boutarfass (TP)
+* Bernard Besserer (TP)
 * Jordan Calandre (TP)
 * Laurent Mascarilla (TP)
 * Matthieu Robert (TP)
@@ -45,7 +45,6 @@ Christophe Saint-Jean
 
 * 5 cours de 1,5 heures (Amphithéâtre)
 * 12 TPs de 1,5 heures (Salles de TP)
-* Pas de TEA.
 
 @ulend
 
@@ -53,9 +52,9 @@ Christophe Saint-Jean
 
 ### Evaluation
 
-$S_1 = \frac{CC_1+CC_2}{2}$
+$$S_1 = \frac{CC_1+CC_2}{2}$$
 
-$S_2 = CC_3$
+$$S_2 = CC_3$$
 
 Les CC se passent en TP (5/6 et 12) sur machine:
 
@@ -92,6 +91,10 @@ Les CC se passent en TP (5/6 et 12) sur machine:
 
 ### Langage humain
 
+```
+les soir chats, mur promèment sur le
+```
+
 @ul
 
 * Un certain _vocabulaire_, _une orthographe_, des _règles de grammaire_ communes
@@ -100,12 +103,6 @@ Les CC se passent en TP (5/6 et 12) sur machine:
 
 @ulend
 
-```
-le noir chats, mur promèment sur le
-```
-
-+++
-
 ### Langage informatique
 
 @ul
@@ -113,10 +110,9 @@ le noir chats, mur promèment sur le
 * La machine traite des informations binaires: 100110010101000110 ... (même si images, sons, *programmes*, ...)
 * Le vocabulaire d'instructions machine est très réduit (arith, logique, mémoire, ...)
 * Pas de tolérance aux erreurs d'instructions
+* Parler à une machine (et donc programmer), c'est s'adresser une **entité efficace mais peu compréhensive** ...
 
 @ulend
-
-Parler à une machine (et donc programmer), c'est s'adresser une entité efficace mais peu compréhensive ...
 
 +++
 
