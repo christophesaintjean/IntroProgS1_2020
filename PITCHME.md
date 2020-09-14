@@ -779,7 +779,7 @@ In [4]: print("l'année", année, end=""); print(" est un bon cru !!")
 l'année  2020 est un bon cru !!
 
 In [5]: print(année, année*2, année / 2, type(année), sep=", ")
-2020, 4038, 1009.5, <class 'int'>
+2020, 4040, 1010, <class 'int'>
 ```
 
 On remarque:
