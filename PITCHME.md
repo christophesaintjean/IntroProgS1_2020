@@ -981,10 +981,10 @@ Conditions de sortie du "while":
 * Répéter *n* fois
 
 ```python
-a = 1
-while a < 10:        # ici n = 10
+cpt = 0
+while cpt < n:    
   <instructions>
-  a = a + 1
+  cpt = cpt + 1
 ```
 
 * Compter le nombre d'itérations
