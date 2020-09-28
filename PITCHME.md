@@ -903,3 +903,259 @@ Une condition peut-être aussi:
 Les conditions peuvent être combinées par *not*, *and* et *or*
 
 +++
+
+#### Exemples if
+
+```python
+In [1]: a = int(input('Nombre de pas ? '))
+Nombre de pas ? 9680
+
+In [2]: if a > 8000:
+          print('Vous avez fait le nombre de pas journaliers recommandé.')
+        else:
+          print('Faire plus d\'exercice.')
+Vous avez fait le nombre de pas journaliers recommandé.
+
+In [3]: if a > 8000: print('bravo')
+bravo
+```
+
++++
+
+### Instruction elif
+
+* *elif* est une contraction de *else if* qui n'oblige pas à une indentation supplémentaire
+* C'est le "switch case" de Python.
+
+```python
+In [1]: a = 7
+
+In [2]: if a < 0:
+          print('a est négatif')
+        elif a % 2 == 0:
+          print('a est pair')
+        elif a % 3 == 0:
+          print('a est divisible par 3')
+        else:
+          print('a est un nombre positif, impair et non divisible par 3')
+a est un nombre positif, impair et non divisible par 3
+```
+
++++
+
+### Démonstration `!`
+
+* Conditions if imbriquées : a $\in$ [0,1]
+* Année bissextile
+* Tortue (version modifiée du TP1)
+
+---
+
+## Répétitives
+
+while, break, for, continue
+
+---
+
+### Répétitive *"Tant que"*
+
+Syntaxe:
+
+```python
+while <condition>:
+    <instructions>
+```
+
+La condition est évaluée **avant** chaque éxécution des instructions.
+
+Conditions de sortie du "while":
+
+* La condition n'est pas vérifiée.
+* Une sortie explicite par *break*.
+* Crash du programme...
+
++++
+
+##### Cas fréquents d'utilisation *"Tant que"* 1/2
+
+* Répéter *n* fois
+
+```python
+a = 1
+while a < 10:
+  <instructions>
+  a = a + 1
+```
+
+* Compter le nombre d'itérations
+
+```python
+cpt = 0
+while <condition>:
+  <instructions>
+  cpt += 1
+```
+
++++
+
+#### Cas fréquents d'utilisation *"Tant que"* 2/2
+
+* Parcourir un intervalle de valeurs $[a,b]$ par pas de $eps$
+
+```python
+x = a
+while x <= b:
+  <instructions>
+  x += eps
+```
+
+* Une boucle d'événements
+
+```python
+while True:
+  <instructions>
+  if <événement particulier>:
+    break
+```
+
++++
+
+##### Petits exos sur "while"
+
+* Combien de fois peut on diviser un nombre par deux ?
+* Compter le nombre de entiers impairs entre 1 et 100 divisibles par 3 mais pas par 7.
+* Racine carrée entière:
+  Etant donné un entier $n$, déterminer le plus grand nombre entier $r$ tel que $r^2 \leq n$.
+
+---
+
+### Répétitive for
+
+Syntaxe:
+
+```python
+for <variable> in <sequence>:
+     <instructions>
+```
+
+La séquence peut être:
+
+* Une plage de valeurs avec *range*
+* Une chaîne de caractères
+* Une liste, un tuple (plus tard)
+* personnalisée ...
+
+Le terme anglais est *iterable*.
+
++++
+
+#### Instruction *range*
+
+Syntaxe:
+
+```python
+range(stop) -> range object
+range(start, stop[, step]) -> range object
+```
+
+Cas d'utilisation:
+
+* range(i, j) -> i, i+1, i+2, ..., j-1.
+* range(i) -> 0, 1, ..., i-1..
+
+Attention, step peut être négatif.
+
++++
+
+#### Exemples *for* avec *range*
+
+```python
+In [1]: for i in range(1,10):
+          print(i, end=' ')
+###
+1 2 3 4 5 6 7 8 9
+In [2]: for i in range(5):
+          print(i, end=' ')
+###
+0 1 2 3 4
+In [3]: for i in range(8, 0, -1):
+          print(i, end=' ')
+###
+8 7 6 5 4 3 2 1
+```
+
++++
+
+#### Exemple *for* avec *str*
+
+```Python
+In [1]: for c in 'Python':
+          print(c, end=', ')
+###
+P, y, t, h, o, n,
+
+In [2]: cpt = 0
+        for c in 'Pythonneries':
+            if c == 'e':
+              cpt += 1
+        print('Nombre de "e": ', cpt)
+###
+Nombre de "e":  2
+```
+
++++
+
+#### Exercice d'application
+
+`$$\lim_{n \rightarrow +\infty} 4 \sum_{k=0}^{n} \frac{(-1)^{k}}{2k+1} = \pi$$`
+
+Ecrire un programme basé sur cette formule qui approxime $\pi$:
+
+```Python
+In [1]: n = 10**6; som = 0
+
+In [2]: for k in range(n+1):
+          som = som + (-1)**k / (2*k+1)
+
+In [3]: print(4*som)
+3.1414926535900345
+
+In [4]: import math; print(math.pi)
+3.141592653589793
+```
+
++++
+
+### Bonus: instruction *continue*
+
+*continue* permet d'interrompre une itération:
+
+* On retourne au test de la condition dans *while*
+* Prochaine itération dans *for*
+
+```python
+In [1]: for i in range(10):
+          if i % 2 == 0:
+            continue
+          print(i, end=' ')
+1 3 5 7 9
+```
+
++++
+
+### Bonus: *else* dans *while* et *for*
+
+* *else* est exécuté si:
+  * la condition du *while* est *False*
+  * *for* a parcouru toute la séquence
+* *else* n'est pas exécuté si interruption par un *break*.
+
+```python
+In [2]: for i in range(10):
+          print(i, end=' ')
+        else:
+          print('\nTerminé')
+
+0 1 2 3 4 5 6 7 8 9
+Terminé
+```
