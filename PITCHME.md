@@ -1690,7 +1690,438 @@ In [2]: for cle, valeur in Sam.items():
 * La Famille Simpson
 
 Exercice:
+
 * Imaginer un dictionnaire regroupant les membres d'un club sportif:
-    * la clé (un entier) répresente le numéro de licence
-    * la valeur est un dictionnaire stockant le nom, l'age, cotisation, actif.
+  * la clé (un entier) répresente le numéro de licence
+  * la valeur est un dictionnaire stockant le nom, l'age, cotisation, actif.
+
 ---
+
+## Fonctions
+
+* Qu'est ce qu'une fonction ?
+* Comment définir une fonction ?
+* Qu'est ce qu'un paramètre ? une valeur de sortie ?
+* Comment appeler une fonction ?
+
++++
+
+### Fonctions et paramètres 1/2
+
+Les fonctions sont un moyen de :
+
+* Regrouper un ensemble d’instructions en les nommant.
+* Finaliser la résolution d'un sous-problème pour réutilisation.
+
+Syntaxe pour la **définition** d'une fonction:
+
+```python
+def <nom_de_la_fonction>(<parametre_1>, ..., <parametre_n>):
+    <instructions>
+```
+
++++
+
+### Fonctions et paramètres 2/2
+
+```python
+def <nom_de_la_fonction>(<parametre_1>, ..., <parametre_n>):
+    <instructions>
+```
+
+Si l’exécution de ces instructions dépend de certaines valeurs, on parlera de fonction avec des *paramètres*.
+
+Les parenthèses sont obligatoires, même si la fonction n'a pas aucun paramètre.
+
++++
+
+### Exemple de fonction sans paramètre
+
+```python
+from datetime import datetime
+
+def bonjour():
+  heure = datetime.now()
+  print(f"Bonjour, il est {heure}")
+```
+
++++
+
+### Exemple de fonction avec un paramètre
+
+```python
+def aff_somme_n_entiers(n):
+  som = 0
+  for i in range(1, n+1):
+    som = som + i
+  print(f"Résultat: {som}")
+```
+
++++
+
+### Exemple de fonction avec 2 paramètres
+
+```python
+def aff_diff_ch(ch1, ch2):
+  ch1_u = ch1.upper()
+  ch2_u = ch2.upper()
+  if ch1_u == ch2_u:
+    print(f"{ch1} et {ch2} sont égales à la casse près")
+  else:
+    print(f"{ch1} et {ch2} sont différentes")
+
+```
+
++++
+
+### Nombre et types de paramètres
+
+Les fonctions ont généralement *un nombre fixe* de paramètres (0 à n) de type:
+
+* basique: *int*, *float*, *bool*, *str*, ...
+* liste, tuple, dictionnaire
+* fonctions...
+* objets (non traité dans ce cours)
+
+Python permet de définir une fonction avec un nombre variable de paramètres (*args, **kwargs non traité dans ce cours) => une liste.
+
++++
+
+### L'instruction *return*
+
+L'*instruction* **return** indique ce que *renvoie* la fonction.
+
+```python
+def somme_n_entiers(n):
+  som = 0
+  for i in range(1, n+1):
+    som = som + i
+  return som
+```
+
+Il peut y avoir plusieurs **return** dans une même fonction.
+
++++
+
+### Type de retour d'une fonction
+
+Idem que les paramètres:
+
+* basique: *int*, *float*, *bool*, *str*, ...
+* liste, tuple, dictionnaire
+* fonctions...
+* objets (non traité dans ce cours)
+
+Pour retourner plusieurs valeurs, on utilisera un tuple, une liste ou dictionnaire.
+
++++
+
+### Retourner plusieurs valeurs
+
+Pour retourner plusieurs valeurs, on utilisera un tuple, une liste ou dictionnaire
+
+```python
+def decomposition(n, m):
+  a = n // m
+  b = n % m
+  return (a, b)  
+  # return {'quotient': a, 'reste': b}
+```
+
++++
+
+### Une fonction sans return `?!`
+
+Une fonction sans *return* explicite "retournera" la valeur spéciale *None*.
+On parlera alors de **procédure** dans certains langages de programmation.
+
+Trois formes équivalentes:
+
+```python
+def f1(a, b):   # pas de return
+  c = a + b
+
+def f2(a, b):   # la dernière expression n'est pas retournée
+  c = a + b
+  c
+
+def f3(a, b):   # return explicite sans expression
+  c = a + b
+  return
+```
+
++++
+
+### Appel de fonction 1/2
+
+Syntaxe pour l'appel d'une fonction (paramètres effectifs):
+
+```python
+<nom_de_la_fonction>(<val_1>, ..., <val_n>)
+```
+
+On parle aussi de valeurs d'appel de la fonction
+
++++
+
+### Appel de fonction 2/2
+
+Rappel pour la définition (paramètres formels):
+
+```python
+def <nom_de_la_fonction>(<parametre_1>, ..., <parametre_n>):
+    <instructions>
+```
+
+Tout ce passe comme si les **paramètres effectifs** sont automatiquement copiés dans les **paramètres formels**:
+
+```python
+<parametre_1> = <val_1>
+...
+<parametre_n> = <val_n>
+```
+
++++
+
+### Passage par valeur
+
+La fonction travaille donc avec une copie des paramètres effectifs.
+
+* Pour les types basiques, la fonction ne modifie pas les paramètres effectifs.
+* Pour les listes et les dictionnaires, la fonction **modifie** les paramètres effectifs.
+On parlera alors d'effet de bord de la fonction (modification de variables externes).
+
++++
+
+### Exemples de fonctions
+
+* Passage par valeurs de listes
+
++++
+
+### Exemples de fonctions
+
+* Palindromes
+* Nettoyage de dictionnaires
+* Les paramètres sont fun !
+
++++
+
+### Compléments : Valeurs par défaut 1/2
+
+On peut donner des valeurs par défaut à certains paramètres que l'on positionne **à droite**:
+
+```python
+In [1]: def f(a,b=2):
+          return a**b
+In [2]: f(2)
+Out[2]: 4
+
+In [3]: f(4,3)
+Out[3]: 64
+```
+
++++
+
+### Compléments : Valeurs par défaut 2/2
+
+```python
+In [4]: def f(b=2, a):
+          return a**b
+File "<ipython-input-6-8d9bc7ce0f4b>", line 1
+   def f(b=2, a):
+         ^
+SyntaxError: non-default argument follows default argument
+```
+
++++
+
+### Compléments : Ordre des paramètres
+
+```python
+In [4]: def f(b=2, a):
+          return a**b
+  File "<ipython-input-6-8d9bc7ce0f4b>", line 1
+    def f(b=2, a):
+         ^
+SyntaxError: non-default argument follows default argument
+```
+
++++
+
+### Exemples de fonctions
+
+* Année bissextile (défaut: 2020, None)
+
++++
+
+### La récursivité
+
+Une fonction est dite récursive si elle se calcule en faisant appel à elle même.
+
+```python
+def factorielle(n):
+  if n < 2:
+    return 1
+  return n * factorielle(n-1)
+```
+
+Très utile dans le paradigme 'Diviser pour régner' (cf. dichotomie TP5)
+
++++
+
+### Exemples de fonctions
+
+* Factorielle
+* Palindromes
+
+---
+
+## Portée des variables
+
+Quand et comment mes variables sont accessibles ?
+
++++
+
+### Cas simples 1/2
+
+On a déjà vu que les variables n'existent que si elles ont été assignées (valeur ou *None*)
+
+```python
+In [1]: a
+NameError: name 'a' is not defined
+
+In [2]: a = 3
+
+In [3]: a
+Out[3]: 3
+```
+
+Idem pour les fonctions.
+
++++
+
+### Cas simples 2/2
+
+Et dans un bloc:
+
+```python
+In [1]: for i in range(10):
+          a=3
+In [2]: print(a, i)
+3 9
+```
+
+On parle du niveau *global* ou *principal*.
+
++++
+
+### Portée des variables: Fonctions 1/5
+
+```python
+In [1]: def f():
+   ...:     a = 2 * x
+In [2]: f()
+....
+NameError: name 'x' is not defined
+```
+
+* La définition de la fonction *f* ne pose pas de problème.
+* L'erreur est détectée **à l'appel** de *f*.
+
+### Portée des variables: Fonctions 2/5
+
+```python
+In [1]: a = 1
+
+In [2]: def f():
+          print(a)
+
+In [3]: f()
+1
+```
+
+* Les variables du niveau supérieur sont utilisables dans la fonction.
+* Considéré comme une *mauvaise pratique* car *f* **est paramétrée** par *a*.
+
++++
+
+### Portée des variables: Fonctions 3/5
+
+```python
+In [1]: a = 1
+
+In [2]: def f():
+          a = 2
+
+In [3]: f()
+
+In [4]: a
+Out[4]: 1
+1
+```
+
+* Dans f, *a*  est vue comme une variable locale.
+* La variable globale *a* est surchargée localement mais inchangée globalement.
+
++++
+
+### Portée des variables: Fonctions 4/5
+
+```python
+In [1]: def f(b):
+          a = 3
+In [2]: a
+NameError: name 'a' is not defined
+
+In [3]: b
+NameError: name 'b' is not defined
+```
+
+Les variables **locales** et les **paramètres** formels n'existent pas à l'extérieur d'une fonction.
+
++++
+
+### Portée des variables: Fonctions 5/5
+
+```python
+In [1]: a = 1
+
+In [2]: def f():
+    ...:     a = 2 * a
+
+In [3]: f()
+...
+UnboundLocalError: local variable 'a' referenced before assignment
+```
+
+La variable *a* est prioritairement considérée comme locale.
+
++++
+
+### Variables globales
+
+Avertissement : ce qui suit est généralement considéré comme une mauvaise pratique.
+
+```python
+In [1]: a = 1
+In [2]: def f():
+          global a
+          a = 2 * a
+In [3]: f()
+In [4]: a
+Out[4]: 2
+```
+
+* La variable *a* est maintenant vue comme globale.
+* Toute modification de *a* à l'intérieur de la fonction la modifie à l'extérieur.
+
++++
+
+### Variables non locales
+
+Avertissement : ce qui suit est pratique mais rarement utilisé (Python 3)
+
+On parle ici du cas de fonctions locales définies dans une autre fonction (def dans def)
+
+Le mot-clé **non local** permet de faire référence à une variable d'un niveau supérieur sans revenir au niveau global.

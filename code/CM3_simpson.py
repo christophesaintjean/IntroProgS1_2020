@@ -17,3 +17,6 @@ for enfant in Homer['enfants']:
 for enfant in Homer['enfants']:
     enfant['père'] = Homer
     enfant['mère'] = Marge
+
+# Est ce que Homer est le père de Lisa ?
+test = Homer is Lisa['père']
