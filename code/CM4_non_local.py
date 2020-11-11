@@ -1,9 +1,8 @@
 def f():
-    a = "f"
-
+    a = 2
     def local_f():
         nonlocal a
-        a = "local_f"
+        a = 4
         print(f"local_f: {a}")
 
     print(f"f: {a}")

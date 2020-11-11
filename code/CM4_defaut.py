@@ -1,18 +1,39 @@
+from datetime import datetime
 
-import datetime
+def bissextile(année):
+    C4 = année % 4 == 0
+    C100 = année % 100 == 0
+    C400 = année % 400 == 0
+    return (C4 and not C100) or C400
 
-année = int(input("Année ? "))
+def bissextile_def(année=2020):
+    C4 = année % 4 == 0
+    C100 = année % 100 == 0
+    C400 = année % 400 == 0
+    return (C4 and not C100) or C400
 
-# si l'année est divisible par 4 et non divisible par 100, ou
-# si l'année est divisible par 400.
+def bissextile_def2(année=datetime.now().year):
+    C4 = année % 4 == 0
+    C100 = année % 100 == 0
+    C400 = année % 400 == 0
+    return (C4 and not C100) or C400
 
-C4 = année % 4 == 0
-C100 = année % 100 == 0
-C400 = année % 400 == 0
+def bissextile_def3(année=None):
+    if année is None:
+        année = datetime.now().year
+    C4 = année % 4 == 0
+    C100 = année % 100 == 0
+    C400 = année % 400 == 0
+    return (C4 and not C100) or C400
 
-bissextile = (C4 and not C100) or C400
 
-now = datetime.datetime.now()
-print(now.year)
+année = 1900
+print(bissextile(année))
+print(bissextile_def(année))
+print(bissextile_def())
+print(bissextile_def2(année))
+print(bissextile_def2())
+print(bissextile_def3(année))
+print(bissextile_def3())
 
 
