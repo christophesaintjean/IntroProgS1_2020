@@ -982,7 +982,7 @@ Conditions de sortie du "while":
 
 ```python
 cpt = 0
-while cpt < n:    
+while cpt < n:
   <instructions>
   cpt = cpt + 1
 ```
@@ -2028,6 +2028,8 @@ NameError: name 'x' is not defined
 
 * La définition de la fonction *f* ne pose pas de problème.
 * L'erreur est détectée **à l'appel** de *f*.
+
++++
 
 ### Portée des variables: Fonctions 2/5
 
