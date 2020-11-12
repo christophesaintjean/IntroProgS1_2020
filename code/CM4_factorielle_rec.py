@@ -5,7 +5,6 @@
 def factorielle(n):
   if n < 2:
     return 1
-  return factorielle(n-1) * n
-
+  return factorielle(n-1) * n 
 
 print(factorielle(5))
