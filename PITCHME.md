@@ -2205,7 +2205,6 @@ a = xxx.ma_fonction(4) # directement
 
 ### Généralités: Directive import et ses conventions 2/3
 
-* On met les "import" en début de fichier
 * Le module xxx à importer est dans le même répertoire que le module yyy qui l'importe
 * L'interpréteur connait le chemin de recherche pour les modules de la bibliothèque standard
 * On doit préciser le nom du module chaque fois à moins de faire un raccourci:
@@ -2254,7 +2253,7 @@ print(maintenant)
 ### Modules/packages
 
 * On peut vouloir regrouper des modules au sein d'un paquet (*package*)
-* Un paquet peut contenir des sous-paquets (répertoire avec __init__.py)
+* Un paquet peut contenir des sous-paquets (répertoire avec \_\_init\_\_.py)
 * Les modules sont à l'intérieur de cette arborescence
 
 [Exemple de la documentation officielle](https://docs.python.org/fr/3/tutorial/modules.html#packages)
@@ -2268,11 +2267,8 @@ print(maintenant)
   * dir()
   * dir(math) ou dir(datetime)
   * a = "" ; dir(a)
-<<<<<<< HEAD
 
 +++
-=======
->>>>>>> ee93610e46839d1d56b6a1a6ffb27df6f8f5abca
 
 ### Directive from ... import ... as ...
 
@@ -2303,7 +2299,7 @@ from racine import *
 a = racine_dicho(4)
 ```
 
-Il existe un mécanismee via __init__.py pour contrôler l'importation.
+Il existe un mécanisme via \_\_init\_\_.py pour contrôler l'importation.
 
 * Pratique déconseillée car on ne maîtrise pas totalement ce qui est importé.<br>
   On devrait plutôt faire:
