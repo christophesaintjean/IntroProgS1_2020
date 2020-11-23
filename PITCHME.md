@@ -165,7 +165,7 @@ class HelloWorld {
 
 ### Exemples : Hello World 2/2
 
-Python 3 (CM1_helloworld.py):
+Python 3 (CM1\_helloworld.py):
 
 ```python
 print("Hello World")
@@ -2187,7 +2187,7 @@ else:
 ### Généralités: Directive import et ses conventions 1/3
 
 ```python
-# Contenu du fichier "xxx.py"
+# Contenu du fichier "xxx.py"  -> module xxx
 ma_variable = <une expression>
 
 def ma_fonction(<les paramètres>):
@@ -2205,8 +2205,9 @@ a = xxx.ma_fonction(4) # directement
 
 ### Généralités: Directive import et ses conventions 2/3
 
-* Le module xxx est un fichier nommé xxx.py
+* On met les "import" en début de fichier
 * Le module xxx à importer est dans le même répertoire que le module yyy qui l'importe
+* L'interpréteur connait le chemin de recherche pour les modules de la bibliothèque standard
 * On doit préciser le nom du module chaque fois à moins de faire un raccourci:
 
 ```python
@@ -2252,7 +2253,11 @@ print(maintenant)
 
 ### Modules/packages
 
-Certains modules disposent d'une organisation interne basée sur des sous-modules ("packages")
+* On peut vouloir regrouper des modules au sein d'un paquet (*package*)
+* Un paquet peut contenir des sous-paquets (répertoire avec __init__.py)
+* Les modules sont à l'intérieur de cette arborescence
+
+[Exemple de la documentation officielle](https://docs.python.org/fr/3/tutorial/modules.html#packages)
 
 +++
 
@@ -2260,9 +2265,11 @@ Certains modules disposent d'une organisation interne basée sur des sous-module
 
 * *help*(<module> ou <fonction> ou <variable>) permet d'accéder à une aide dans la console
 * *dir*(<module> ou  <variable>) donne la liste des noms dans l'espace de nommage local:
-   * dir()
-   * dir(math) ou dir(datetime)
-   * a = "" ; dir(a) 
+  * dir()
+  * dir(math) ou dir(datetime)
+  * a = "" ; dir(a)
+
++++
 
 ### Directive from ... import ... as ...
 
@@ -2270,7 +2277,6 @@ Certains modules disposent d'une organisation interne basée sur des sous-module
 
 ```python
 from racine import racine_dicho
-
 a = racine_dicho(4)
 ```
 
@@ -2279,7 +2285,6 @@ a = racine_dicho(4)
 ```python
 from racine import racine_dicho as mon_sqrt
 from math import sqrt as py_sqrt, exp as py_exp
-
 a = mon_sqrt(4)
 ```
 
@@ -2295,8 +2300,9 @@ from racine import *
 a = racine_dicho(4)
 ```
 
+Il existe un mécanismee via __init__.py pour contrôler l'importation.
+
 * Pratique déconseillée car on ne maîtrise pas totalement ce qui est importé.<br>
-  
   On devrait plutôt faire:
 
 ```python
@@ -2332,6 +2338,26 @@ Egalement, il existe des modules pour:
 * Analyser les pages web.
 * ...
 
++++
+
+### Module vs Programme 1/2
+
+Un module peut contenir:
+
+* des définitions de fonctions
+* du code à éxécuter (ex.: une démonstration des fonctions)
+
+Problème: Comment importer des fonctions sans exécuter obligatoirement le code de démo. ?
+
++++
+
+### Module vs Programme 2/2
+
+Solution: La variable spéciale **\_\_name\_\_** est une chaine de caractère qui vaut:
+
+* le nom du module quand il est importé
+* la valeur "\_\_main\_\_" quand il est exécuté.
+
 ---
 
 ## Fichiers
@@ -2348,9 +2374,9 @@ Egalement, il existe des modules pour:
 f = open('fichier.txt', mode='r')
 ```
 
-* ‘r’ : Lecture seule
-* ‘w’ : Lecture/Ecriture (écrase le fichier existant)
-* ‘a’ : Lecture/Ecriture à partir de la fin  
+* ‘r’ (read) : Lecture seule
+* ‘w’ (write) : Lecture/Ecriture (écrase le fichier existant)
+* ‘a’ (append) : Lecture/Ecriture à partir de la fin  
 
 +++
 
@@ -2447,10 +2473,10 @@ Python fournit le module **json**.
 ```python
 In [1]: import json
 
-In [2]: Lisa = {'age': 8, 'sexe': 'F', 'prénom': 'Lisa', 'nom': 'Simpson'}
+In [2]: Lisa = {'age': 8, 'sexe': 'F', 'prenom': 'Lisa', 'nom': 'Simpson'}
 
-Out[3]: json.dumps(Lisa)
-Out[3]: '{"age": 8, "sexe": "F", "pr\\u00e9nom": "Lisa", "nom": "Simpson"}'
+Out[3]: json.dumps(Lisa)     # chaine de caractères
+Out[3]: '{"age": 8, "sexe": "F", "prenom": "Lisa", "nom": "Simpson"}'
 ```
 
 Il sait convertir automatiquement :
@@ -2521,13 +2547,13 @@ CSV ("Comma-separated values") = des valeurs séparées par des virgules.
 Exemple: [place de parking disponibles](https://opendata.larochelle.fr/dataset/stationnement-places-disponibles-en-temps-reel/)
 
 ```csv
-dp_id,dp_parc_id,dp_libelle,dp_place_disponible,dp_date,dp_nb_places,dp_x,dp_y
-8977068,5,VIEUX PORT OUEST,289,11-11-2018 18:39:18,420,"379378,696053463","6570179,2092431"
-8977069,4,ENCAN,366,11-11-2018 18:39:22,406,"379864,062986826","6569682,94080835"
-8977070,17,VIEUX PORT SUD,459,11-11-2018 18:39:23,500,"379925,99731268","6570032,62381534"
-8977071,16,VERDUN,424,11-11-2018 18:39:24,452,"379670,377120847","6570946,77561493"
-8977072,20,MAUBEC,65,11-11-2018 18:39:18,109,"380380,783303404","6570379,61800321"
-8977073,21,PORT NEUF,155,11-11-2018 18:39:16,172,"377155,700640437","6570849,71710348"
+dp_id;dp_parc_id;dp_libelle;dp_place_disponible;dp_date;dp_nb_places;dp_x;dp_y
+15272676;5;VIEUX PORT OUEST;327;23-11-2020 15:51:16;375;379378.69605346315;6570179.209243104
+15272677;4;ENCAN;0;04-11-2020 09:27:28;441;379864.062986826;6569682.940808346
+15272678;17;VIEUX PORT SUD;339;23-11-2020 15:51:23;430;379925.9973126798;6570032.623815341
+15272679;16;VERDUN;329;23-11-2020 15:51:18;430;379670.3771208469;6570946.775614928
+15272680;20;MAUBEC;105;23-11-2020 15:51:25;190;380380.7833034035;6570379.618003208
+15272681;21;PORT NEUF;162;23-11-2020 15:51:19;171;377155.7006404366;6570849.717103481
 ```
 
 +++
@@ -2671,4 +2697,3 @@ Découvrir les bases de la programmation informatique.
   * Tri d'un tableau
   * Sélection d'éléments (k-ième plus grand)
   * ...
-
