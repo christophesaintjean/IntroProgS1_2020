@@ -2268,8 +2268,11 @@ print(maintenant)
   * dir()
   * dir(math) ou dir(datetime)
   * a = "" ; dir(a)
+<<<<<<< HEAD
 
 +++
+=======
+>>>>>>> ee93610e46839d1d56b6a1a6ffb27df6f8f5abca
 
 ### Directive from ... import ... as ...
 
