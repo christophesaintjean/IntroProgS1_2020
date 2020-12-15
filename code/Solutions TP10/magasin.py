@@ -31,10 +31,21 @@ print(verification(d_pu, d_stock))
 
 def achat_possible(k, v, d):
     return k in d and d[k]>=v
-    #return d[k]>=v and k in d
+
 print(verification(d_pu, d_stock))
 print(achat_possible("Hand spinner 3d", 2, d_stock))
 print(achat_possible("Console Minux", 5, d_stock))
 
-                
+def achats_possibles(d_achats, d_stock):
+    #for produit, quantite in d_achats.items():
+    #    if not achat_possible(produit, quantite, d_stock):
+    for produit in d_achats.keys():
+        if not achat_possible(produit, d_achats[produit], d_stock):
+            return False
+    return True
+        
+print('*' * 10 + ' Achats possibles ' +  '*' * 10 )  
+print(achats_possibles({"Hand spinner 3d": 2}, d_stock))
+d_achats = {"Hand spinner 3d": 2, "Console Minux": 3}
+print(achats_possibles(d_achats, d_stock))           
                 
